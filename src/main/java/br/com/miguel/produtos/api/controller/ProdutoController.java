@@ -31,7 +31,7 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<Produto> save(@RequestBody Produto produto){
         Produto produtoSalvo = produtoService.save(produto);
-        return ResponseEntity.ok().body(produtoSalvo);
+        return ResponseEntity.status(201).body(produtoSalvo);
     }
 
     @PutMapping("/{id}")
