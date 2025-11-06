@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 title="tabelaProduto">Tabela de Produtos</h1>
+
+    <div>
+        <h3>Buscar por Nome:</h3>
+        <input type="text" id="campoBuscaNome" placeholder="Buscar produto por nome...">
+        <button onclick="buscarPorNome()">Buscar</button>
+    </div>
+
+    <div>
+        <h3>Buscar por ID:</h3>
+        <input type="text" id="campoBuscaId" placeholder="Buscar produto por id...">
+        <button onclick="buscarPorId()">Buscar</button>
+    </div>
+
+    <button onclick="limparBusca()">Mostrar Todos</button>
+    <br>
+
+    <table width="100%" border="1" style="text-align: center;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+<script src="script.js"></script>
+</html>
