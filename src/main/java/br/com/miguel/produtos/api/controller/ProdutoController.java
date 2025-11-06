@@ -34,7 +34,7 @@ public class ProdutoController {
         return ResponseEntity.ok().body(produtoSalvo);
     }
 
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Produto> update(@PathVariable UUID id, @RequestBody Produto produto){
         Produto produtoAtualizado = produtoService.update(id, produto);
         return ResponseEntity.ok().body(produtoAtualizado);
