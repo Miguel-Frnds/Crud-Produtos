@@ -26,32 +26,15 @@ public class ProdutoService {
     }
 
     public Produto save(Produto produto){
-
-        if(produto.getNome() == null || produto.getNome().isBlank()) {
-            throw new ProdutoSemNomeException();
-        }
-        if(produto.getPreco() == null || produto.getPreco() < 0) {
-            throw new ValorInvalidoException("preço");
-        }
-        if(produto.getQuantidade() == null || produto.getQuantidade() < 0) {
-            throw new ValorInvalidoException("quantidade");
-        }
-
+        validarProduto(produto);
         return produtoRepository.save(produto);
     }
 
     public Produto update(UUID id, Produto produto){
         Produto produtoEncontrado = getById(id);
 
-        if(produto.getNome() == null || produto.getNome().isBlank()) {
-            throw new ProdutoSemNomeException();
-        }
-        if(produto.getPreco() == null || produto.getPreco() < 0) {
-            throw new ValorInvalidoException("preço");
-        }
-        if(produto.getQuantidade() == null || produto.getQuantidade() < 0) {
-            throw new ValorInvalidoException("quantidade");
-        }
+        validarProduto(produto);
+
         if(produto.getDescricao() != null && !produto.getDescricao().isBlank()) {
             produtoEncontrado.setDescricao(produto.getDescricao());
         }
@@ -68,8 +51,28 @@ public class ProdutoService {
         produtoRepository.delete(produtoEncontrado);
     }
 
+    public List<Produto> findByNome(String nome) {
+        if(nome == null || nome.trim().isBlank()) {
+            return List.of();
+        }
+
+        return produtoRepository.findByNomeContainingIgnoreCase(nome);
+    }
+
     public Produto getById(UUID id){
         return produtoRepository.findById(id)
                 .orElseThrow(() -> new ProdutoNotFoundException(id));
+    }
+
+    public void validarProduto(Produto produto){
+        if(produto.getNome() == null || produto.getNome().isBlank()) {
+            throw new ProdutoSemNomeException();
+        }
+        if(produto.getPreco() == null || produto.getPreco() < 0) {
+            throw new ValorInvalidoException("preço");
+        }
+        if(produto.getQuantidade() == null || produto.getQuantidade() < 0) {
+            throw new ValorInvalidoException("quantidade");
+        }
     }
 }
