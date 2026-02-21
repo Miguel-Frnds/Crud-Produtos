@@ -10,9 +10,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// Camada responsavel pelas regras de negocios e validacoes
+
 @Service
 public class ProdutoService {
 
+    // Autowired e mais simples, porem menos seguro em relacao a injecao por construtor
     @Autowired
     private ProdutoRepository produtoRepository;
 
@@ -63,6 +66,9 @@ public class ProdutoService {
                 .orElseThrow(() -> new ProdutoNotFoundException(id));
     }
 
+
+    // Metodo para garantir integridade dos dados antes mandar para o banco de dados
+    // Valida nome, preco e quantidade
     public void validarProduto(Produto produto){
         if(produto.getNome() == null || produto.getNome().isBlank()) {
             throw new ProdutoSemNomeException();
