@@ -65,7 +65,7 @@ O objetivo do projeto foi aplicar na prática:
 
 Abaixo está um vídeo demonstrando o funcionamento completo do sistema:
 
-- 📎 Link do vídeo: (Adicionar aqui o link do vídeo)
+- 📎 Link do vídeo: [(Demonstração de Funcionamento)](https://drive.google.com/file/d/16gf7JcD_HVefWM0yoU15yyiAUKskpAYk/view?usp=drive_link)
 
 ## 👥 Integrantes
 - Miguel Pereira Fernandes
